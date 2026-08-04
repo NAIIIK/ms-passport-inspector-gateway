@@ -44,5 +44,4 @@ public interface PassportInspectorClient {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     BatchCheckResultDto getBatchCheckResult(@PathVariable("jobId") UUID jobId);
-
 }
