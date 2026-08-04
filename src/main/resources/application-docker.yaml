@@ -1,0 +1,3 @@
+passport-inspector:
+  client:
+    url: ${PASSPORT_INSPECTOR_CLIENT_URL:http://passport-inspector:8080}
