@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: queen-passport-bff
+    name: ms-passport-bff
 
   servlet:
     multipart:
