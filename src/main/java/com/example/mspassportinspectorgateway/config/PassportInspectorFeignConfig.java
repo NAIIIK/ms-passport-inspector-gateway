@@ -3,20 +3,28 @@ package com.example.mspassportinspectorgateway.config;
 import feign.RequestInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 @RequiredArgsConstructor
 public class PassportInspectorFeignConfig {
 
     private static final String MERCHANT_ID_HEADER = "merchantId";
-    private static final String INTERNAL_TOKEN_HEADER = "x-token";
-
-    private final PassportInspectorClientProperties properties;
 
     @Bean
     public RequestInterceptor passportInspectorHeadersInterceptor() {
         return requestTemplate -> {
-            requestTemplate.header(MERCHANT_ID_HEADER, properties.getMerchantId());
-            requestTemplate.header(INTERNAL_TOKEN_HEADER, properties.getToken());
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+            if (authentication instanceof JwtAuthenticationToken jwtAuthentication) {
+                String tokenValue = jwtAuthentication.getToken().getTokenValue();
+                String merchantId = jwtAuthentication.getToken().getClaimAsString("merchantId");
+
+                requestTemplate.header(HttpHeaders.AUTHORIZATION, "Bearer " + tokenValue);
+                requestTemplate.header(MERCHANT_ID_HEADER, merchantId);
+            }
         };
     }
 }

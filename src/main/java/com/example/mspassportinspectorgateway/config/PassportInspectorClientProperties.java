@@ -10,6 +10,4 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class PassportInspectorClientProperties {
 
     private String url;
-    private String merchantId;
-    private String token;
 }
