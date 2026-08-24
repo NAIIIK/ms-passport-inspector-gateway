@@ -21,9 +21,9 @@ app:
     jwt:
       issuer: ${JWT_ISSUER:passport-inspector-gateway}
       secret: ${JWT_SECRET:demo-demo-demo-demo-demo-demo-demo-demo-secret}
-      access-token-minutes: ${JWT_ACCESS_TOKEN_MINUTES:60}
+      access-token-validity-minutes: ${JWT_ACCESS_TOKEN_MINUTES:60}
 
-    users:
+    api-users:
       - username: demo
         password: "{noop}demo"
         merchant-id: 550e8400-e29b-41d4-a716-446655440000
