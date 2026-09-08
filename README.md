@@ -2,7 +2,7 @@
 
 BFF (backend-for-frontend) for the
 [passport-inspector-platform](https://github.com/NAIIIK/passport-inspector-platform).
-The single entry point for external clients — issues JWTs and forwards
+The single entry point for external clients - issues JWTs and forwards
 authenticated requests to [ms-passport-inspector](https://github.com/NAIIIK/ms-passport-inspector)
 over OpenFeign. Holds no business logic or persistence of its own.
 
@@ -29,11 +29,11 @@ Default port: `8082`.
 | Env var | Default | Purpose |
 |---|---|---|
 | `PASSPORT_INSPECTOR_CLIENT_URL` | `http://localhost:8080` | Core service base URL |
-| `JWT_SECRET` | (demo default — override in any real deployment) | Shared HS256 secret with the core service |
+| `JWT_SECRET` | (demo default - override in any real deployment) | Shared HS256 secret with the core service |
 | `JWT_ACCESS_TOKEN_MINUTES` | `60` | Access token validity |
 
 Demo users are seeded in `application.yaml` under `app.security.api-users`
-(`demo`/`demo`, role `CLIENT`; `admin`/`admin`, roles `CLIENT` + `ADMIN`) —
+(`demo`/`demo`, role `CLIENT`; `admin`/`admin`, roles `CLIENT` + `ADMIN`) -
 replace with a real user store before this goes anywhere beyond a demo.
 
 ## API
@@ -47,7 +47,7 @@ replace with a real user store before this goes anywhere beyond a demo.
 | `GET` | `/api/passport-check-batches/{jobId}` | Poll result of a batch check |
 
 Every endpoint except `/api/auth/login` requires a bearer JWT obtained from
-login. The gateway attaches the caller's `merchantId` to downstream calls —
+login. The gateway attaches the caller's `merchantId` to downstream calls -
 callers never pass it directly.
 
 ## Monitoring
