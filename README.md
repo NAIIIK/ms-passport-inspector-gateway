@@ -54,9 +54,3 @@ callers never pass it directly.
 
 `/actuator/health`, `/actuator/info`, and `/actuator/prometheus` are public
 (no JWT required); all other actuator endpoints require authentication.
-
-## Tests
-
-```bash
-./mvnw test
-```
